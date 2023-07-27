@@ -23,7 +23,8 @@ kotlin {
             baseName = "shared"
             isStatic = true
         }
-        extraSpecAttributes["resources"] = "['src/commonMain/resources/**', 'src/iosMain/resources/**']"
+        extraSpecAttributes["resources"] =
+            "['src/commonMain/resources/**', 'src/iosMain/resources/**']"
     }
 
     val ktorVersion = "2.3.2"
@@ -39,6 +40,7 @@ kotlin {
                 implementation(compose.runtime)
                 implementation(compose.foundation)
                 implementation(compose.material3)
+                implementation(compose.materialIconsExtended)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
 
@@ -49,11 +51,14 @@ kotlin {
 
                 api("io.github.aakira:napier:$napierVersion")
 
+                api("io.insert-koin:koin-core:$koinCoreVersion")
+
                 api("com.russhwolf:multiplatform-settings:1.0.0")
 
                 api("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")
                 api("cafe.adriel.voyager:voyager-transitions:$voyagerVersion")
                 implementation("cafe.adriel.voyager:voyager-koin:$voyagerVersion")
+                api("cafe.adriel.voyager:voyager-tab-navigator:$voyagerVersion")
             }
         }
         val androidMain by getting {
